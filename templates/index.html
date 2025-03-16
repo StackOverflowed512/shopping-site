@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block header %}
+<div class="heading">
+  <h1>Welcome to Shop App</h1>
+  <img
+      src="https://media.istockphoto.com/id/1206806317/vector/shopping-cart-icon-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=1RRQJs5NDhcB67necQn1WCpJX2YMfWZ4rYi1DFKlkNA="
+      alt="cart"
+      height="100"
+      width="100"
+  />
+</div>
+
+{% endblock %} {% block content %}
+<div class="home-container">
+    <h2>Your One-Stop Shop for Electronics</h2>
+    <p>Register or login to start shopping with your 1000₹ welcome bonus!</p>
+
+    <div class="action-buttons">
+        {% if g.user %}
+        <a href="{{ url_for('shop') }}" class="btn">Start Shopping</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn">Register Now</a>
+        <a href="{{ url_for('login') }}" class="btn btn-secondary">Log In</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

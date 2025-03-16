@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Your Profile</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="profile-info">
+    <h2>{{ g.user['username'] }}</h2>
+    <p>Available Balance: <strong>₹{{ g.user['balance'] }}</strong></p>
+    <a href="{{ url_for('add_balance') }}" class="btn">Add Balance</a>
+  </div>
+
+  <h3>Purchase History</h3>
+  
+  {% if orders %}
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>{{ order['date'] }}</td>
+            <td>{{ order['name'] }}</td>
+            <td>₹{{ order['price'] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You haven't made any purchases yet.</p>
+    <a href="{{ url_for('shop') }}" class="btn">Go Shopping</a>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Shop</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="balance-display">
+    <p>Your Balance: <strong>₹{{ g.user['balance'] }}</strong></p>
+  </div>
+
+  <div class="products-container">
+    {% for product in products %}
+      <div class="product-card">
+        <h2>{{ product['name'] }}</h2>
+        <p class="description">{{ product['description'] }}</p>
+        <p class="price">₹{{ product['price'] }}</p>
+        
+        <form action="{{ url_for('buy_product', product_id=product['id']) }}" method="post">
+          <button type="submit" class="btn {% if g.user['balance'] < product['price'] %}btn-disabled{% endif %}"
+                  {% if g.user['balance'] < product['price'] %}disabled{% endif %}>
+            {% if g.user['balance'] < product['price'] %}Insufficient Balance{% else %}Buy Now{% endif %}
+          </button>
+        </form>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

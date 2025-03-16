@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>Add Balance</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="balance-display">
+    <p>Current Balance: <strong>₹{{ g.user['balance'] }}</strong></p>
+  </div>
+
+  <form method="post">
+    <div class="form-group">
+      <label for="amount">Amount to Add (₹)</label>
+      <input type="number" name="amount" id="amount" min="1" required>
+    </div>
+    <div class="form-actions">
+      <input type="submit" value="Add Balance" class="btn">
+      <a href="{{ url_for('profile') }}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+{% endblock %}
