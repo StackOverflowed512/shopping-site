@@ -139,10 +139,3 @@ The application comes with three pre-defined products:
 - Protection against SQL injection via SQLite's parameterized queries
 - Session management for user authentication
 
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
